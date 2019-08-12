@@ -1,0 +1,16 @@
+.board {
+    display: flex;
+    height: 300px;
+    width: 300px;
+    margin:auto;
+    flex-flow: row wrap;
+}
+
+.square {
+    display: flex;
+    height: 98px;
+    width: 98px;
+    border: 1px solid black;
+    justify-content: center;
+    line-height: 98px;
+}
