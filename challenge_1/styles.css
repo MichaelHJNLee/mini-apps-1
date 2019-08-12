@@ -14,3 +14,19 @@
     justify-content: center;
     line-height: 98px;
 }
+
+.score-container {
+    display: flex;
+    height: auto;
+    width: 200px;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.name-container {
+    display: flex;
+    height: auto;
+    width: 200px;
+    margin: auto;
+    flex-direction: column;
+}
