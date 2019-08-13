@@ -7,6 +7,7 @@ var Model = {
     playerO: [],
     player1Score: 0,
     player2Score: 0,
+    victory: false
 }
 
 //View: holds game functionality; dom manipulation
@@ -45,7 +46,7 @@ var View = {
         return false;
     },
     click: (event) => {
-        if (event.target.innerHTML) {
+        if (event.target.innerHTML || Model.victory === true) {
             return;
         }
         var bank = [[0,0], [0,1], [0,2], [1,0], [1,1], [1,2], [2,0], [2,1], [2,2]];
@@ -61,6 +62,7 @@ var View = {
                 Model.player1Score++;
                 document.getElementById('player1').innerHTML = `${Model.name1} X: ${Model.player1Score}`;
                 Model.player = true;
+                Model.victory = true;
                 return;
             }
             Model.playerX.push(coord);
@@ -75,6 +77,7 @@ var View = {
                 Model.player2Score++;
                 document.getElementById('player2').innerHTML = `${Model.name2} O: ${Model.player2Score}`;
                 Model.player = false;
+                Model.victory = true;
                 return;
             }
             Model.playerO.push(coord);
@@ -105,6 +108,7 @@ var View = {
         document.getElementById('winner').innerHTML = '';
         Model.playerX = [];
         Model.playerO = [];
+        Model.victory = false;
     }
 }
 
