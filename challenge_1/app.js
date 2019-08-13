@@ -7,7 +7,8 @@ var Model = {
     playerO: [],
     player1Score: 0,
     player2Score: 0,
-    victory: false
+    victory: false,
+    gravity: false
 }
 
 //View: holds game functionality; dom manipulation
@@ -109,6 +110,40 @@ var View = {
         Model.playerX = [];
         Model.playerO = [];
         Model.victory = false;
+    },
+    gravity: (event) => {
+        // if (event.target.innerHTML || Model.victory === true) {
+        //     return;
+        // }
+        // var numBank = [1,2,3,4,5,6,7,8,9]
+        // var bank = [[0,0], [0,1], [0,2], [1,0], [1,1], [1,2], [2,0], [2,1], [2,2]];
+        // var coord = bank[parseInt(event.target.id) - 1];
+        // for (var i = 0; i < Model.playerX.length; i++) {
+        //     if (Model.playerX[i][0] === 0 && Model.playerX[i][1] === 0) {
+        //         Model.playerX[i][1] = 2;
+        //     }
+        //     if (Model.playerX[i][0] === 0 && Model.playerX[i][1] === 1) {
+        //         Model.playerX[i][0] = 1;
+        //         Model.playerX[i][1] = 2;
+        //     }
+        //     if (Model.playerX[i][0] === 0 && Model.playerX[i][1] === 2) {
+        //         Model.playerX[i][0] = 2;
+        //         Model.playerX[i][1] = 2;
+        //     }
+        //     if (Model.playerX[i][0] === 0 && Model.playerX[i][1] === 0) {
+        //         Model.playerX[i][1] = 2;
+        //     }
+        //     if (Model.playerX[i][0] === 0 && Model.playerX[i][1] === 0) {
+        //         Model.playerX[i][1] = 2;
+        //     }
+        //     if (Model.playerX[i][0] === 0 && Model.playerX[i][1] === 0) {
+        //         Model.playerX[i][1] = 2;
+        //     }
+        //     if (Model.playerX[i][0] === 0 && Model.playerX[i][1] === 0) {
+        //         Model.playerX[i][1] = 2;
+        //     }
+        // }
+        console.log('gravity')
     }
 }
 
@@ -116,7 +151,7 @@ var View = {
 var Controller = {
     boardClick: () => {
         for (var i = 1; i <= 9; i++) {
-            document.getElementById(`${i}`).addEventListener('click', (event) => {View.click(event)})
+            document.getElementById(`${i}`).addEventListener('click', (event) => {View.click(event)});
         }
     },
     nameSelect: () => {
@@ -125,6 +160,25 @@ var Controller = {
     },
     reset: () => {
         document.getElementById('reset').addEventListener('click', () => {View.reset()});
+    },
+    gravity: () => {
+        document.getElementById('gravity').addEventListener('click', () => {
+            if (document.getElementById('gravity').checked === true) {
+                for (var i = 1; i <= 9; i++) {
+                    var oldNode = document.getElementById(`${i}`);
+                    var newNode = oldNode.cloneNode(true);
+                    oldNode.parentNode.replaceChild(newNode, oldNode);
+                    document.getElementById(`${i}`).addEventListener('click', (event) => {View.gravity(event)})
+                }
+            } else {
+                for (var i = 1; i <= 9; i++) {
+                    var oldNode = document.getElementById(`${i}`);
+                    var newNode = oldNode.cloneNode(true);
+                    oldNode.parentNode.replaceChild(newNode, oldNode);
+                    document.getElementById(`${i}`).addEventListener('click', (event) => {View.click(event)})
+                }
+            }
+        })
     }
 }
 
@@ -132,4 +186,5 @@ View.initialize();
 Controller.boardClick();
 Controller.nameSelect();
 Controller.reset();
+Controller.gravity();
 
