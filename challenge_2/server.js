@@ -2,15 +2,17 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const port = 3000;
+const multer = require('multer');
+const upload = multer();
+// const fileUpload = require('express-fileupload');
 
-var storage = {};
-
+app.use(express.static('client'));
 app.use(express.urlencoded());
 
-app.get('/', (req,res) => res.sendFile(__dirname + '/client/index.html'));
 
-app.post('/', (req,res) => {
-    var report = JSON.parse(req.body.data);
+app.post('/', upload.single('file'), (req,res) => {
+    console.log(req.file.buffer.toString())
+    var report = JSON.parse(req.file.buffer.toString());
     // store all possible keys at every heirarchy in here using mapKeys
     var keyHolder = [];
     // store values for individuals inside arrays and store these arrays inside here

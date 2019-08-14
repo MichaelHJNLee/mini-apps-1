@@ -2,14 +2,18 @@
 <html>
     <head>
         <title>Challenge 2</title>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     </head>
     <body>
-        <textarea name="data" form="form" id="text"></textarea>
-        <form method="POST" id="form" target="csv">
-            <input type="submit" id="submit">
+        <!-- <textarea name="data" form="form" id="text"></textarea> -->
+        <!-- <button type="button" class="submit">Submit</button> -->
+        <form action="/" encType="multipart/form-data" method="POST" id="form" target="csv">
+            <input name="file" type="file" form="form" id="file"/>
+            <input type="submit" id="submit" />
         </form>
     </body>
-    <iframe name="csv" width="50%"></iframe>
-    <script src="app.js"></script>
+    <iframe name="csv" width="50%" id="frame"></iframe>
+    <div class="hold"></div>
+    <script type="text/javascript" src="app.js"></script>
 </html>
 
