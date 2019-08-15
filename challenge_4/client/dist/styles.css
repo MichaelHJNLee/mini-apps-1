@@ -1,0 +1,30 @@
+.board-container {
+    display: flex;
+    height: 600px;
+    width: 700px;
+    border: 1px solid black;
+    flex-flow: row;
+}
+
+.button-container {
+    display: flex;
+    height: 50px;
+    width: 700px;
+    justify-content: space-around;
+}
+
+.row {
+    display: flex;
+    height: 598px;
+    width: 98px;
+    border: 1px solid black;
+    flex-flow: column;
+}
+
+.space {
+    display: flex;
+    height: 98px;
+    width: 98px;
+    border-radius: 50px;
+    border: 1px solid black;
+}
