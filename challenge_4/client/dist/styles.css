@@ -4,6 +4,7 @@
     width: 700px;
     border: 1px solid black;
     flex-flow: row;
+    background-color: yellow;
 }
 
 .button-container {
@@ -16,8 +17,8 @@
 .row {
     display: flex;
     height: 598px;
-    width: 98px;
-    border: 1px solid black;
+    width: 100px;
+    /* border: 1px solid black; */
     flex-flow: column;
 }
 
