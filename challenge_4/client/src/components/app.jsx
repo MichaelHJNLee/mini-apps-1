@@ -19,6 +19,7 @@ class App extends React.Component {
             victory: false
         }
         this.buttonClick = this.buttonClick.bind(this);
+        this.counter = 0;
     }
 
     // componentDidMount() {
@@ -41,7 +42,7 @@ class App extends React.Component {
             return;
         }
         var board = this.state.game;
-        var row = board[e]; // ['','','','','','']
+        var row = board[e];
         var space;
 
         for (var i = 0; i < row.length; i++) {
@@ -54,12 +55,20 @@ class App extends React.Component {
         if (space === undefined) {
             return;
         }
+        this.counter++;
         board[e] = row;
         this.setState({
             game: board
         })
         if (this.checkVictory(parseInt(e), space)) {
-            alert('Winner')
+            alert('Winner');
+            this.setState({
+                victory: true
+            })
+            return;
+        }
+        if (this.counter === 42) {
+            alert('Tie');
             this.setState({
                 victory: true
             })
